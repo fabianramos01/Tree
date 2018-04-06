@@ -22,8 +22,6 @@ public class Controller implements ActionListener {
 		tree.add(new Node(5));
 		tree.add(new Node(1));
 		tree.add(new Node(200));
-		System.out.println("El dato mayor es: " + tree.higher());
-		System.out.println("El dato menor es: " + tree.smaller());
 		window = new WindowTree(this);
 		window.paintTree(tree.getRoot());
 	}

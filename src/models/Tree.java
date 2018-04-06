@@ -5,10 +5,12 @@ public class Tree {
 	private Node root;
 
 	public void add(Node node) {
-		if (root != null) {
-			add(root, node);
-		} else {
-			root = node;
+		if (searhNode(root, node.getInformation()) == null) {
+			if (root != null) {
+				add(root, node);
+			} else {
+				root = node;
+			}
 		}
 	}
 
@@ -29,27 +31,38 @@ public class Tree {
 	}
 
 	public void deleteNode(int info) {
+		Node nodeRemove = searhNode(root, info);
 		if (info != root.getInformation()) {
-			Node nodeRemove = searhNode(root, info);
 			Node before = before(root, info);
 			if (nodeRemove != null) {
 				if (nodeRemove.getLeft() == null && nodeRemove.getRight() == null) {
 					deleteLeaf(before, nodeRemove);
-				} else if (nodeRemove.getLeft() == null && nodeRemove.getRight() != null) {
-					deleteAfter(before, nodeRemove);
-				} else if (nodeRemove.getLeft() != null && nodeRemove.getRight() == null) {
-					deleteAfter(before, nodeRemove);
+				} else if (nodeRemove.getLeft() != null && nodeRemove.getRight() != null) {
+					deleteBaseLeafs(nodeRemove);
 				} else {
-					deleteBaseLeafs(before, nodeRemove);
+					deleteAfter(before, nodeRemove);
 				}
 			}
 		} else {
-			root = null;
+			deleteRoot(info);
 		}
-
 	}
 
-	private void deleteBaseLeafs(Node before, Node nodeRemove) {
+	private void deleteRoot(int info) {
+		if (root.getLeft() == null && root.getRight() == null) {
+			root = null;
+		} else if (root.getLeft() != null && root.getRight() != null) {
+			deleteBaseLeafs(root);
+		} else if (root.getLeft() != null || root.getRight() == null) {
+			root.setInformation(root.getLeft().getInformation());
+			root.setLeft(null);
+		} else {
+			root.setInformation(root.getRight().getInformation());
+			root.setRight(null);
+		}
+	}
+
+	private void deleteBaseLeafs(Node nodeRemove) {
 		int higherNum = higher(nodeRemove.getLeft());
 		int smallerNum = smaller(nodeRemove.getRight());
 		if ((nodeRemove.getInformation() - smallerNum) > (higherNum - nodeRemove.getInformation())) {
