@@ -3,7 +3,8 @@ package controller;
 public enum ActionCommand {
 
 	COMMAND_ADD("COMMAND_ADD", "Agregar"), 
-	COMMAND_DELETE("COMMAND_DELETE", "Eliminar");
+	COMMAND_DELETE("COMMAND_DELETE", "Eliminar"),
+	COMMAND_BALANCE("COMMAND_BALANCE", "Balancear");
 	
 	private String command;
 	private String title;

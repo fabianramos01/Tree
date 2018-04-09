@@ -63,13 +63,13 @@ public class Tree {
 	}
 
 	private void deleteBaseLeafs(Node nodeRemove) {
-		int higherNum = higher(nodeRemove.getLeft());
-		int smallerNum = smaller(nodeRemove.getRight());
+		int higherNum = higher(nodeRemove.getLeft()).getInformation();
+		int smallerNum = smaller(nodeRemove.getRight()).getInformation();
 		if ((nodeRemove.getInformation() - smallerNum) > (higherNum - nodeRemove.getInformation())) {
-			deleteNode(smaller(nodeRemove.getRight()));
+			deleteNode(smaller(nodeRemove.getRight()).getInformation());
 			nodeRemove.setInformation(smallerNum);
 		} else {
-			deleteNode(higher(nodeRemove.getLeft()));
+			deleteNode(higher(nodeRemove.getLeft()).getInformation());
 			nodeRemove.setInformation(higherNum);
 		}
 	}
@@ -132,34 +132,34 @@ public class Tree {
 		return null;
 	}
 
-	public int higher() {
+	public Node higher() {
 		if (root != null) {
 			return higher(root);
 		}
-		return 0;
+		return null;
 	}
 
-	private int higher(Node node) {
+	protected Node higher(Node node) {
 		if (node.getRight() != null) {
 			return higher(node.getRight());
 		} else {
-			return node.getInformation();
+			return node;
 		}
 
 	}
 
-	public int smaller() {
+	public Node smaller() {
 		if (root != null) {
 			return smaller(root);
 		}
-		return 0;
+		return null;
 	}
 
-	private int smaller(Node node) {
+	protected Node smaller(Node node) {
 		if (node.getLeft() != null) {
 			return smaller(node.getLeft());
 		} else {
-			return node.getInformation();
+			return node;
 		}
 	}
 
