@@ -16,7 +16,7 @@ public class Node {
 		} else if (right != null  && left == null) {
 			return right.height();
 		} else if (right == null  && left != null) {
-			return left.height();
+			return -left.height();
 		} else {
 			return 0;
 		}
