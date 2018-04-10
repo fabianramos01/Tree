@@ -18,11 +18,9 @@ public class Window extends JFrame{
 	public Window() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
-		
 		model = new DefaultMutableTreeNode();
 		jTree = new JTree(model);
 		add(new JScrollPane(jTree), BorderLayout.CENTER);
-		
 		setVisible(true);
 	}
 	

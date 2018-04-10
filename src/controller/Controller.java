@@ -17,24 +17,20 @@ public class Controller implements ActionListener {
 
 	public Controller() {
 		tree = new AVL();
-		// tree.add(new Node(1));
-		// tree.add(new Node(2));
-		// tree.add(new Node(3));
-		// tree.add(new Node(3));
-		// tree.add(new Node(1));
-		// tree.add(new Node(2));
-		tree.add(new Node(1));
-		tree.add(new Node(3));
-		tree.add(new Node(2));
+//		tree.add(new Node(1));
+//		tree.add(new Node(2));
+//		tree.add(new Node(3));
+//		tree.add(new Node(3));
+//		tree.add(new Node(1));
+//		tree.add(new Node(2));
+//		tree.add(new Node(3));
+//		tree.add(new Node(1));
+//		tree.add(new Node(2));
 //		tree.add(new Node(3));
 //		tree.add(new Node(2));
 //		tree.add(new Node(1));
 		window = new WindowTree(this);
 		window.paintTree(tree.getRoot());
-	}
-
-	public static void main(String[] args) {
-		new Controller();
 	}
 
 	@Override
@@ -49,10 +45,9 @@ public class Controller implements ActionListener {
 			window.paintTree(tree.getRoot());
 			break;
 		case COMMAND_BALANCE:
-			tree.balanceFactor(tree.getRoot());
+			tree.balance(tree.getRoot());
 			window.paintTree(tree.getRoot());
 			break;
 		}
-
 	}
 }
