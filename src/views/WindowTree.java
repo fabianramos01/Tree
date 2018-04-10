@@ -24,11 +24,12 @@ public class WindowTree extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
 		panelButtons(listener);
+		setJMenuBar(new MenuBar(listener));
 		setVisible(true);
 	}
 
 	private void panelButtons(ActionListener listener) {
-		JPanel panel = new JPanel(new GridLayout(1, 2));
+		JPanel panel = new JPanel(new GridLayout(1, 3));
 		JButton btnAdd = new JButton(ActionCommand.COMMAND_ADD.getTitle());
 		btnAdd.setActionCommand(ActionCommand.COMMAND_ADD.getCommand());
 		btnAdd.addActionListener(listener);
@@ -39,6 +40,11 @@ public class WindowTree extends JFrame {
 		btnDelete.addActionListener(listener);
 		btnDelete.setFont(AGENCY_FB);
 		panel.add(btnDelete);
+		JButton btnBalance = new JButton(ActionCommand.COMMAND_BALANCE.getTitle());
+		btnBalance.setActionCommand(ActionCommand.COMMAND_BALANCE.getCommand());
+		btnBalance.addActionListener(listener);
+		btnBalance.setFont(AGENCY_FB);
+		panel.add(btnBalance);
 		add(panel, BorderLayout.PAGE_END);
 	}
 
@@ -52,7 +58,7 @@ public class WindowTree extends JFrame {
 		super.paint(g);
 		if (root != null) {
 			g.setFont(AGENCY_FB);
-			addNode(root, 0, getContentPane().getWidth() / 2, 50, g);
+			addNode(root, 0, getContentPane().getWidth() / 2, 70, g);
 		}
 	}
 
