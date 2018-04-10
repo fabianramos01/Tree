@@ -4,15 +4,12 @@ import javax.swing.JOptionPane;
 
 public class AVL extends Tree {
 	
-	public int balanceFactor(Node actual) {
-		int right = height(actual.getRight(), 0);
-		int left = height(actual.getLeft(), 0);
-		if (right - left <= -2) {
+	public void balance(Node actual) {
+		if (actual.balanceFactor() <= -2) {
 			moveRight(actual);
-		} else if (2 <= right - left) {
+		} else if (2 <= actual.balanceFactor()) {
 			moveLeft(actual);
 		}
-		return right - left;
 	}
 	
 	private void moveLeft(Node node) {
@@ -67,18 +64,5 @@ public class AVL extends Tree {
 				moveRR(node.getLeft());
 			}
 		}
-	}
-	
-	private int height(Node actual, int num) {
-		if (actual != null) {
-			num += 1;
-			if (actual.getLeft() != null || actual.getRight() != null) {
-				num = height(actual.getLeft(), num);
-				if (num < height(actual.getRight(), num)) {
-					num = height(actual.getRight(), num);
-				}
-			}
-		}
-		return num;
 	}
 }

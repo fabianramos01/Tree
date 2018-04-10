@@ -58,7 +58,7 @@ public class WindowTree extends JFrame {
 		super.paint(g);
 		if (root != null) {
 			g.setFont(AGENCY_FB);
-			addNode(root, 0, getContentPane().getWidth() / 2, 70, g);
+			addNode(root, 0, getContentPane().getWidth() / 2, 90, g);
 		}
 	}
 
@@ -68,6 +68,7 @@ public class WindowTree extends JFrame {
 			g.setColor(Color.WHITE);
 			g.drawString(node.toString(), x + width + 19, height + 33);
 			g.setColor(Color.BLACK);
+			g.drawString(String.valueOf(node.balanceFactor()), x + width, height);
 			addNode(node.getLeft(), x + width, -1 * (Math.abs(width) / 2), height + 100, g);
 			addNode(node.getRight(), x + width, (Math.abs(width) / 2), height + 100, g);
 		}
