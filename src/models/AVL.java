@@ -23,7 +23,8 @@ public class AVL extends Tree {
 		if (high.getLeft() == null) {
 			moveLL(node);
 		} else {
-			high.setRight(high.getLeft());
+			high.setRight(new Node(high.getInformation()));
+			high.setInformation(high.getLeft().getInformation());
 			high.setLeft(null);
 			JOptionPane.showMessageDialog(null, "RL");
 			moveLL(node);
@@ -49,7 +50,8 @@ public class AVL extends Tree {
 		if (small.getRight() == null) {
 			moveRR(node);
 		} else {
-			small.setLeft(small.getRight());
+			small.setLeft(new Node(small.getInformation()));
+			small.setInformation(small.getRight().getInformation());
 			small.setRight(null);
 			JOptionPane.showMessageDialog(null, "LR");
 			moveRR(node);
